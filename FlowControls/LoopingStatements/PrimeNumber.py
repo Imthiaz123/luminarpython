@@ -14,7 +14,7 @@ else:
     print("number is not prime")
 
 
-
+#print prime numbers in range
 num1=int(input("enter lower limit:"))
 num2=int(input("enter upper limit:"))
 
@@ -22,18 +22,18 @@ for val in range(num1,num2):
     for i in range(2, val):
         if((val%i)==0):
             break
-    else:
-        print(val)
+        else:
+            print(val)
 
 
-
+#sum of prime numbers
 num1=int(input("enter lower limit:"))
 num2=int(input("enter upper limit:"))
 sum=0
 
 for val in range(num1,num2):
     flag = 1
-    for i in range(2, int(val/2)):
+    for i in range(2, val):
         if((val%i)==0):
             flag=0
             break
