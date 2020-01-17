@@ -1,5 +1,5 @@
 
-num=int(input("enter number:"))
+"""num=int(input("enter number:"))
 flag=0
 for i in range(2,num):
 
@@ -23,7 +23,7 @@ for val in range(num1,num2):
         if((val%i)==0):
             break
         else:
-            print(val)
+            print(val)"""
 
 
 #sum of prime numbers

@@ -1,23 +1,43 @@
-num1=10
-num2=20
 
-add=num1+num2
-print(add)
+def add(num1,num2):
+    addn=num1+num2
+    return addn
+res=add(10,20)
+print("add:",res)
 
-sub=num1-num2
-print(sub)
+def sub(num1,num2):
+    subn=num1-num2
+    return subn
+res=sub(100,40)
+print("sub:",res)
 
-mul=num1*num2
-print(mul)
+def mul(num1,num2):
+    muln=num1*num2
+    return muln
+res=mul(10,20)
+print("mul:",res)
 
-div=num1/num2
-print(div)
+def div(num1,num2):
+    divn=num1/num2
+    return divn
+res=div(50,20)
+print("div:",res)
 
-mod=num2%num1
-print(mod)
+def mod(num1,num2):
+    modul=num1%num2
+    return modul
+res=mod(50,20)
+print("mod:",res)
 
-pow=num1**2
-print(pow)
+def pow(num1):
+    power=num1**2
+    return power
+res=pow(10)
+print("power:",res)
 
-fldiv=9//2
-print(fldiv)
+def fldiv(num1,num2):
+    fdiv=num1//num2
+    return fdiv
+res=fldiv(50,30)
+print("float div:",res)
+
