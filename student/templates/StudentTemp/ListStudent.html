@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>students</h1>
+<table border="1px solid black">
+<tr>
+    <td>Roll Number</td>
+    <td>name</td>
+    <td>address</td>
+    <td>course</td>
+    <td>Password</td>
+</tr>
+{% for val in stud%}
+    <tr>
+        <td>{{val.roll}}</td>
+    <td>{{val.name}}</td>
+    <td>{{val.address}}</td>
+    <td>{{val.course}}</td>
+        <td>{{val.password}}</td>
+        <td><a href="{% url 'update' val.id %}">update</a></td>
+        <td><a href="{% url 'delete' val.id %}">delete</a></td>
+        <td><a href="{% url 'view' val.id %}">view</a></td>
+    </tr>
+
+{% endfor %}
+
+
+    </table>
+</body>
+</html>

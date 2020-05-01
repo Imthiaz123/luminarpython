@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% extends 'BudgetTemp/base.html' %}
+{% block body_block2 %}
+{{user}}
+{% endblock %}
+{% block body_block %}
+
+<div class="container">
+    <h1>Select Date</h1>
+<form method="post" id="refrm">
+    {% csrf_token %}
+    <table class="table table-dark">
+            {% for field in form %}
+        <tr>
+            <td>{{field.label_tag}}</td>
+            <td>{{field}}</td>
+
+        </tr>
+        {% endfor %}
+     <tr>
+
+         <td> <button type="submit" class="btn btn-primary">Submit</button></td>
+
+        </tr>
+    </table>
+</form>
+</div>
+
+<form method="post">
+<div class="container">
+
+    <h1>Datewise Sum</h1>
+
+    {% csrf_token %}
+    <table class="table table-dark">
+           <tr>
+            <td>Category</td>
+            <td>Total Amount</td>
+
+        </tr>
+            {% for data in qs %}
+
+        <tr>
+            <td>{{data.category__category_name}}</td>
+            <td>{{data.categorysum}}</td>
+
+        </tr>
+        {% endfor %}
+     <tr>
+
+
+
+        </tr>
+    </table>
+</form>
+    <div class="col-md-6">
+      <canvas id="myChartBar"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+  <script>
+    var endpoint = '/api';
+
+    $.ajax({
+      method: "GET",
+      url: endpoint,
+      success: function(data) {
+        drawLineGraph(data, 'myChartline');
+        drawBarGraph(data, 'myChartBar');
+        console.log("drawing");
+      },
+      error: function(error_data) {
+        console.log(error_data);
+      }
+    })
+
+
+    function drawBarGraph(data, id) {
+      var labels = data.labels;
+      var chartLabel = data.chartLabel;
+      var chartdata = data.chartdata;
+      var ctx = document.getElementById(id).getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: chartLabel,
+            data: chartdata,
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+      });
+    }
+  </script>
+
+{% endblock %}

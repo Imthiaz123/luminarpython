@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<body>
+
+<div class="container">
+    <h1>Edit Products</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <table class="table table-dark">
+            {% for field in form %}
+        <tr>
+            <td>{{field.label_tag}}</td>
+            <td>{{field}}</td>
+            <td>{{field.errors}}</td>
+        </tr>
+        {% endfor %}
+     <tr>
+       <td> <button type="submit" class="btn btn-primary">Submit</button></td>
+        </tr>
+    </table>
+</form>
+    </div>
+</body>
+</html>

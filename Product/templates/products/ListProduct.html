@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'products/base.html' %}
+{% block body_block %}
+
+ <div class="container">
+     <h1>List Of Products</h1>
+<table  class="table table-dark">
+    <tr>
+    {% for pr in list %}
+        <td>{{pr.productname}}</td>
+        <td>{{pr.productcategory}}</td>
+        <td>{{pr.price}}</td>
+        <td> <img src="{{ pr.image.url}}" alt="no img" style="size:1px;" ></td>
+
+
+
+       <td><a href="" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">View</a></td>
+        <td><a href="{% url 'product_update' pr.id %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Update</a></td>
+         <td><a href="{% url 'product_delete' pr.id %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Delete</a></td>
+    <td><a href="{% url 'product_view' pr.id %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">View</a></td>
+    </tr>
+    {% endfor %}
+</table>
+ </div>
+{% endblock %}
